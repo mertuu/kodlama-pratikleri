@@ -1,37 +1,22 @@
-Kodlama Problemleri ve Pratikleri
-====
-Bu çalışma yazılım geliştirmeye yeni başlayanlar ya da üniversite ve lisede yazılım geliştirme dersleri alan ancak bu konuda kendilerini daha da geliştirmek isteyenler için başlamıştır.
+# PyTorch ile Hisse Senedi Fiyatı Tahmini 📈
 
-[Sorular](./sorular) klasöründeki her sorunun çözümünü  birden fazla yazılım dilinde ve [pseudo kod](https://eksisozluk.com/entry/2732439) olarak [çözümler](./cozumler) klasöründe bulabilirsiniz.
+Bu proje, 1 aylık Makine Öğrenimi öğrenme kampının bir parçası olarak geliştirilmiştir. Projenin amacı, geçmiş hisse senedi verilerini kullanarak gelecekteki fiyatları tahmin eden Derin Öğrenme (Deep Learning) tabanlı zaman serisi modelleri oluşturmaktır.
 
-## Nasıl Katkı Sağlarım?
-Projeye aşağıdaki şekilde katkı sağlayabilirsiniz;
+## Kullanılan Teknolojiler
+*   **Python:** Veri analizi ve modelleme.
+*   **PyTorch:** LSTM ve GRU sinir ağlarının inşası ve eğitimi.
+*   **Pandas & Scikit-Learn:** Veri ön işleme, MinMaxScaler ile ölçeklendirme ve train/test ayrımı.
+*   **Matplotlib:** Sonuçların ve zaman serisinin görselleştirilmesi.
+*   **yfinance:** Borsa verilerinin (Amazon - AMZN) canlı olarak çekilmesi.
 
-1. Yeni sorular ekleyerek ya da mevcut soruların hataları varsa düzeleterek.
-2. Çözülmemiş soruların çözümlerini ekleyerek
-3. Çözümü olan soruların başka dillerdeki implementasyonlarını ekleyerek
-4. Readme dosyalarını düzenleyerek ya da çözüm ve sorulardaki hataları bildirerek.
+## Modeller ve Karşılaştırma
+Projede geçmiş 20 günlük fiyat hareketlerine bakarak ertesi günü tahmin eden iki farklı model eğitilmiştir:
 
-Katkı sağlamak istiyorsanız projeyi forklamanız ve bir Pull Request oluşturmanız yeterli.
+1.  **LSTM (Long Short-Term Memory):** Eğitim süresi ~76 saniye.
+2.  **GRU (Gated Recurrent Unit):** Eğitim süresi ~45 saniye.
 
-## Endeks
-1. [Kelimeyi Tersten Yazma Problemi - Basit](./sorular/kelimeyi-tersten-yazma-problemi.md)
-2. [Tekrar eden harfleri bulmaca - Basit](./sorular/tekrar-eden-harfleri-bulmaca.md)
-3. [100'lük not sisteminde kullanıcıdan girilen puan ile harf sonucu bastırma - Basit](./sorular/not-sistemi-sorusu.md) 
-4. [Bir dizide olmayan integer'ı bulma - Basit](./sorular/dizide-olmayan-sayiyi-bulma.md)
-5. [Dijital Toplam Problemi - Orta](./sorular/dijital-toplam-problemi.md)
-6. [Ilk eksik integer degeri bulma - Orta](./sorular/ilk-eksik-integer-degeri-bulma.md)
-7. [Bir matrix'deki maximum boyuta sahip kareyi bulma - Orta](./sorular/matrix_deki_maximum_kareyi_bulma.md)
-8. [Coding Golf Sorusu: 10x10 Kare - Zor](./sorular/10x10-kare-golf-sorusu.md)
-9. [Sierpinski Üçgeni - Zor](./sorular/sierpinski-ucgeni.md)
-10. [En yakin noktalari bulma sorusu (Facebook) - Zor](./sorular/en-yakin-noktalar.md)
+### Test Sonuçları (RMSE)
+*   LSTM Hata Payı: **$4.23**
+*   GRU Hata Payı: **$3.79**
 
-### Not:
-Burdaki birçok problemin (yada sorunun) neredeyse tüm dillerdeki implementasyonlarını [Rosetta Code](https://rosettacode.org/) adlı websitede bulabilirsiniz.
-
-### Maintainers
-- [Mert Susur](https://github.com/msusur)
-- [Ender Ahmet Yurt](https://github.com/enderahmetyurt)
-- [Fırat Özbolat](https://github.com/firatoz)
-- [Cevher Veli Karakoç](https://github.com/cevherkarakoc)
-- [Batuhan Taşkaya](https://github.com/BTaskaya)
+**Sonuç:** GRU modeli daha basit mimarisi sayesinde hem daha hızlı eğitilmiş hem de test verisi üzerinde biraz daha isabetli (düşük hata payı) tahminler üretmiştir.
